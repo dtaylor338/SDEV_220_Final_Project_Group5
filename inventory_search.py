@@ -112,6 +112,51 @@ def used_inventory_search():
     result_window()
 
 
+def new_search():
+    ns = new_search()
+    model = model_var.get()
+    price = int(price_var.get())
+    if model:
+        model_result = ns.model_search(model)
+        for n in model_result:
+            if n not in result_set:
+                result_set.append(n)
+    if price:
+        price_result = ns.price_search(price)
+        for n in price_result:
+            if n not in result_set:
+                result_set.append(n)
+
+
+def all_search():
+    alls = all_search()
+    make = make_var.get()
+    model = model_var.get()
+    year = int(year_var.get())
+    price = int(price_var.get())
+    if make:
+        make_result = alls.make_search(make)
+        for n in make_result:
+            if n not in result_set:
+                result_set.append(n)
+    if model:
+        model_result = alls.model_search(model)
+        for n in model_result:
+            if n not in result_set:
+                result_set.append(n)
+    if year:
+        year_result = alls.year_search(year)
+        for n in year_result:
+            if n not in result_set:
+                result_set.append(n)
+    if price:
+        price_result = alls.price_search(price)
+        for n in price_result:
+            if n not in result_set:
+                result_set.append(n)
+    result_window()
+
+
 # Search Result Window
 def result_window():
     result_win = tk.Tk()
