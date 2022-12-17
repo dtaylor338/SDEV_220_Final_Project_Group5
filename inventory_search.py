@@ -58,15 +58,12 @@ def search():
     if used_var.get() == 1:
         used_inventory_search()
     elif new_var.get() == 1:
-        if make_var.get().lower() != 'chevrolet' or make_var.get().lower() != 'chevy':
-            error()
-        else:
-            new_search()
+        new_inventory_search()
     else:
-        if not make_var.get() and not model_var.get() and not year_var.get():
+        if not make_var.get() and not model_var.get() and not year_var.get() and not price_var.get():
             error()
         else:
-            all_search()
+            all_inventory_search()
 
 
 # Search button
@@ -86,10 +83,11 @@ def error():
 def used_inventory_search():
     us = used_search()
     make = make_var.get()
+    print(make)
     model = model_var.get()
     year = int(year_var.get())
     price = int(price_var.get())
-    if make:
+    if make != " ":
         make_result = us.make_search(make)
         for n in make_result:
             if n not in result_set:
@@ -112,7 +110,7 @@ def used_inventory_search():
     result_window()
 
 
-def new_search():
+def new_inventory_search():
     ns = new_search()
     model = model_var.get()
     price = int(price_var.get())
@@ -126,9 +124,10 @@ def new_search():
         for n in price_result:
             if n not in result_set:
                 result_set.append(n)
+    result_window()
 
 
-def all_search():
+def all_inventory_search():
     alls = all_search()
     make = make_var.get()
     model = model_var.get()
